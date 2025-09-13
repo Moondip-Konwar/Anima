@@ -1,9 +1,9 @@
 <script>
 	import { fetchSearchResults } from "../utils/fetch";
 
-	let key = false;
-	let searchTerm = "";
-	let searchResults = [];
+	let key = $state(false);
+	let searchTerm = $state("");
+	let searchResults = $state([]);
 
 	const toggle = () => {
 		key = !key;
@@ -22,7 +22,7 @@
 </script>
 
 <div class="drawer">
-	<button class="drawer-button" on:click={toggle}>
+	<button class="drawer-button" onclick={toggle}>
 		<svg
 			width="28px"
 			height="28px"
@@ -44,7 +44,7 @@
 			<div class="drawer-content-header">
 				<h2 class="drawer-content-header-title">Search</h2>
 
-				<button class="drawer-button" on:click={toggle}>
+				<button class="drawer-button" onclick={toggle}>
 					<svg
 						width="28px"
 						height="28px"
@@ -66,13 +66,13 @@
 				<div class="anime-search">
 					<input class="anime-search-input" type="text" bind:value={searchTerm} />
 
-					<button class="anime-search-button" on:click={search}>Search</button>
+					<button class="anime-search-button" onclick={search}>Search</button>
 				</div>
 
 				<div class="anime-search-results">
 					{#each searchResults as anime, i (i)}
 						<div class="card">
-							<a href={`/animeInfo/${anime.id}`} on:click={toggle}>
+							<a href={`/animeInfo/${anime.id}`} onclick={toggle}>
 								<img
 									class="card-image"
 									src={anime.coverImage.large}
@@ -129,7 +129,7 @@
 				</div>
 			</div>
 
-			<div class="drawer-content-footer" />
+			<div class="drawer-content-footer"></div>
 		</div>
 	{/if}
 </div>

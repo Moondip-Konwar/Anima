@@ -1,5 +1,5 @@
 <script>
-	export let data;
+	let { data } = $props();
 	const { id, episode, videoLinks, animeInfo } = data;
 </script>
 
@@ -17,7 +17,7 @@
 				allowFullScreen
 				src={videoLinks.primaryVideoLink}
 				title={animeInfo.title.english ? animeInfo.title.english : animeInfo.title.userPreferred}
-				class="stream-screen-iframe" />
+				class="stream-screen-iframe"></iframe>
 		</div>
 	{:else if videoLinks.secondaryVideoLink}
 		<div class="stream-screen">
@@ -26,7 +26,7 @@
 				allowFullScreen
 				src={videoLinks.secondaryVideoLink}
 				title={animeInfo.title.english ? animeInfo.title.english : animeInfo.title.userPreferred}
-				class="stream-screen-iframe" />
+				class="stream-screen-iframe"></iframe>
 		</div>
 	{:else}
 		<p class="stream-screen-sorry-msg">No video stream available</p>

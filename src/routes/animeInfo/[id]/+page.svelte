@@ -1,7 +1,7 @@
 <script>
 	import AnimeRecommendationCarousel from "../../../lib/components/AnimeRecommendationCarousel.svelte";
 
-	export let data;
+	let { data } = $props();
 	let { animeInfo, recommendedAnime } = data;
 </script>
 
@@ -116,7 +116,7 @@
 				{#each [...new Array(animeInfo.episodes).keys()] as episode}
 					<button
 						class="episode-button"
-						on:click={() => (window.location.href = `/animeWatch/${animeInfo.id}/${episode + 1}`)}>
+						onclick={() => (window.location.href = `/animeWatch/${animeInfo.id}/${episode + 1}`)}>
 						{episode + 1}
 					</button>
 				{/each}

@@ -2,7 +2,7 @@
 	import "@splidejs/svelte-splide/css";
 	import { Splide, SplideSlide } from "@splidejs/svelte-splide";
 
-	export let popularAnime;
+	let { popularAnime } = $props();
 	const options = {
 		perPage: 1,
 		type: "loop",

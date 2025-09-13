@@ -1,7 +1,7 @@
 <script>
 	import { fetchPaginatedAnimeData } from "../../utils/fetch";
 
-	export let favouriteAnime;
+	let { favouriteAnime = $bindable() } = $props();
 	let favouriteAnimePageNo = 1;
 
 	const loadFavouriteAnime = async () => {
@@ -69,7 +69,7 @@
 		{/each}
 	</div>
 
-	<button class="load-more-button" on:click={loadFavouriteAnime}>Load more</button>
+	<button class="load-more-button" onclick={loadFavouriteAnime}>Load more</button>
 </div>
 
 <style>

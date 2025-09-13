@@ -3,10 +3,8 @@
 	import TopRatedAnimeTabPanel from "./TabPanels/TopRatedAnimeTabPanel.svelte";
 	import FavouriteAnimeTabPanel from "./TabPanels/FavouriteAnimeTabPanel.svelte";
 
-	let activeTab = 1;
-	export let trendingAnime;
-	export let topRatedAnime;
-	export let favouriteAnime;
+	let activeTab = $state(1);
+	let { trendingAnime, topRatedAnime, favouriteAnime } = $props();
 
 	const switchTabs = (tab) => {
 		activeTab = tab;
@@ -18,19 +16,19 @@
 		<button
 			class="tab"
 			style:border-bottom={activeTab === 1 ? "1px solid #ff8a65" : null}
-			on:click={() => switchTabs(1)}>
+			onclick={() => switchTabs(1)}>
 			Trending
 		</button>
 		<button
 			class="tab"
 			style:border-bottom={activeTab === 2 ? "1px solid #ff8a65" : null}
-			on:click={() => switchTabs(2)}>
+			onclick={() => switchTabs(2)}>
 			Top rated
 		</button>
 		<button
 			class="tab"
 			style:border-bottom={activeTab === 3 ? "1px solid #ff8a65" : null}
-			on:click={() => switchTabs(3)}>
+			onclick={() => switchTabs(3)}>
 			Favourites
 		</button>
 	</div>

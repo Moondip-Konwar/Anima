@@ -2,7 +2,7 @@
 	import "@splidejs/svelte-splide/css";
 	import { Splide, SplideSlide } from "@splidejs/svelte-splide";
 
-	export let recommendedAnime;
+	let { recommendedAnime } = $props();
 	const options = {
 		perPage: 1,
 		gap: "24px",

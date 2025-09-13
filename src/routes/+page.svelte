@@ -2,7 +2,7 @@
 	import Tabs from "../lib/components/Tabs.svelte";
 	import PopularAnimeCarousel from "../lib/components/PopularAnimeCarousel.svelte";
 
-	export let data;
+	let { data } = $props();
 	const { popularAnime, trendingAnime, topRatedAnime, favouriteAnime } = data;
 </script>
 
