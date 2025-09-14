@@ -8,6 +8,7 @@
 
 	/** @type {Props} */
 	let { children } = $props();
+	
 </script>
 
 <div class="root">
