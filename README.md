@@ -1,33 +1,65 @@
 # Anima
 
-#### An anime streaming and discovery web-app built on SvelteKit.
+#### An offline anime library & player built with Tauri + SvelteKit + Python.
 
-#### If this project helped you, a star would be appreciated.
+If you find this project useful, a star would be appreciated ⭐
 
 ## Features
 
-- Lets user explore the ever ending anime space with categories and anime related stats.
-
-- Free anime streaming, best experienced with an adblocker.
-
-- Beautiful and intuitive UI.
+* Organize and browse your **local anime collection** with a clean Netflix-style UI.
+* **MAL sync support** (optional): update your watch progress and metadata.
+* **Video playback with resume**: remembers your last watched position per episode.
+* Stores metadata (titles, posters, etc.) locally for smooth offline browsing.
+* Supports categories, filters, and multiple anime libraries.
 
 ## Future improvements
 
-- I am looking to work around the ads and provide a completely ad free experience. I don't control the ads, they are from the source.
+* Remote/TV navigation support.
+* External subtitle integration.
+* More advanced filtering and discovery.
+* Deeper MAL integration (auto sync, stats).
 
-- Anyone could contribute to this project and help in making it better.
+## Requirements
+
+* **Node.js** (v18+)
+* **npm** or **yarn**
+* **Python** (v3.10+) for backend scripts
+* **Tauri prerequisites** (Rust, Cargo, etc.)
 
 ## Commands to run
 
-##### Run project locally
+### Run project locally (frontend + backend)
+
+```bash
+npm install
+npm run dev
+```
+
+### Run desktop app (Tauri)
+
+```bash
+npm run tauri dev
+```
+
+### Build desktop app (production)
+
+```bash
+npm run tauri build
+```
+
+> Output will go to the folder you configured (e.g., `../build`)
+
+## Folder structure
 
 ```
-npm install
-
-npm run dev
+anima/
+├── src/              # Frontend (SvelteKit)
+├── backend/          # Python backend (scanning, metadata, MAL sync)
+├── data/             # JSON files storing library + metadata
+└── static/           # Static assets (favicon, CSS, fonts)
 ```
 
 ## How it looks
 
-##### Just see it for yourself - [Anima](https://animaa.vercel.app)
+*Work-in-progress screenshots coming soon…*
+
