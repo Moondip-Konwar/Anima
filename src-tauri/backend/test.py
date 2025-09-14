@@ -1,12 +1,11 @@
+from utils import get_args, send_result
 
-
-# backend/test.py
-import sys
 
 def main():
-    # Get command line arguments (skip the first one, which is the script name)
-    args = sys.argv[1:]
-    
-    print(args)
+    args = get_args()
+    # Do your logic here
+    send_result(args)
+
+
 if __name__ == "__main__":
     main()
