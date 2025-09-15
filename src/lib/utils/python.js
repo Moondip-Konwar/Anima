@@ -56,6 +56,10 @@ export async function runPython(script, args = []) {
 	try {
 		const safeArgs = args.map((arg) => (typeof arg === "object" ? JSON.stringify(arg) : arg));
 
+		// Remove leading slash if present
+		script = script.replace(/^\/+/, "");
+		// Prepend "../"
+		script = "../" + script;
 		const rawResult = await invoke("run_python", { script, args: safeArgs });
 		const parsedResult = safeParse(rawResult);
 
