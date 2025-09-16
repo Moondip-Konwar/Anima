@@ -3,8 +3,8 @@ import { runPython } from "../lib/utils/python";
 
 export const load = async ({ setHeaders }) => {
 	const data = await fetchJson(setHeaders);
-	downloadImages(data);
-	return { ...data };
+	const updated_data = await downloadImages(data);
+	return { ...updated_data };
 };
 
 async function fetchNew(setHeaders) {
@@ -47,14 +47,14 @@ async function downloadImages(anime_data) {
 
 			// Banner
 			if (anime.bannerImage) {
-				const bannerStatus = await runPython("../backend/image_downloader.py", [anime.bannerImage, "../images"]);
+				const bannerStatus = await runPython("../backend/image_downloader.py", [anime.bannerImage, "../static/images"]);
 
 				console.log(`Downloaded banner for: ${title}`, bannerStatus);
 
 				if (bannerStatus?.status === "ok" && bannerStatus.file) {
 					// Extract just filename from the path
 					const filename = bannerStatus.file.split("/").pop();
-					anime.bannerImage = filename;
+					anime.bannerImage = "images/" + filename;
 				}
 			} else {
 				console.warn(`Missing banner for: ${title}`);
@@ -64,14 +64,14 @@ async function downloadImages(anime_data) {
 			if (anime.coverImage?.extraLarge) {
 				const coverStatus = await runPython("../backend/image_downloader.py", [
 					anime.coverImage.extraLarge,
-					"../images"
+					"../static/images"
 				]);
 
 				console.log(`Downloaded cover for: ${title}`, coverStatus);
 
 				if (coverStatus?.status === "ok" && coverStatus.file) {
 					const filename = coverStatus.file.split("/").pop();
-					anime.coverImage.extraLarge = filename;
+					anime.coverImage.extraLarge = "images/" + filename;
 				}
 			} else {
 				console.warn(`Missing cover for: ${title}`);
