@@ -16,8 +16,9 @@
   - [x] Titles
   - [x] Descriptions
   - [x] Ratings
-  - [ ] Images / thumbnails
+  - [x] Images / thumbnails
   - [x] Genres, year, episode count
+- [ ] Scan and add local animes to list
 
 ---
 
