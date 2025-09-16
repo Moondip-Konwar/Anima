@@ -43,20 +43,41 @@ async function downloadImages(anime_data) {
 		console.log(`Category: ${category_key}, Count: ${category.length}`);
 
 		for (const anime of category) {
-			if (!anime.bannerImage || !anime.coverImage?.extraLarge) {
-				console.warn(`Skipping anime (missing images):`, anime);
-				continue;
+			const title = anime.title?.english || anime.title?.romaji || "Untitled";
+
+			// Banner
+			if (anime.bannerImage) {
+				const bannerStatus = await runPython("../backend/image_downloader.py", [anime.bannerImage, "../images"]);
+
+				console.log(`Downloaded banner for: ${title}`, bannerStatus);
+
+				if (bannerStatus?.status === "ok" && bannerStatus.file) {
+					// Extract just filename from the path
+					const filename = bannerStatus.file.split("/").pop();
+					anime.bannerImage = filename;
+				}
+			} else {
+				console.warn(`Missing banner for: ${title}`);
 			}
 
-			const bannerStatus = await runPython("../backend/image_downloader.py", [anime.bannerImage, "../images"]);
+			// Cover
+			if (anime.coverImage?.extraLarge) {
+				const coverStatus = await runPython("../backend/image_downloader.py", [
+					anime.coverImage.extraLarge,
+					"../images"
+				]);
 
-			const coverStatus = await runPython("../backend/image_downloader.py", [anime.coverImage.extraLarge, "../images"]);
+				console.log(`Downloaded cover for: ${title}`, coverStatus);
 
-			console.log(
-				`Downloaded for anime: ${anime.title.english || "Untitled"}\n` +
-				`  Banner: ${JSON.stringify(bannerStatus)}\n` +
-				`  Cover: ${JSON.stringify(coverStatus)}`
-			);
+				if (coverStatus?.status === "ok" && coverStatus.file) {
+					const filename = coverStatus.file.split("/").pop();
+					anime.coverImage.extraLarge = filename;
+				}
+			} else {
+				console.warn(`Missing cover for: ${title}`);
+			}
 		}
 	}
+
+	return anime_data;
 }
