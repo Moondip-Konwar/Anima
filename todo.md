@@ -1,23 +1,45 @@
-# Todo Tasks:
+# 📌 Todo Tasks
 
-## Python & Data
+---
 
-[] Make get animes from api request function
-[] MAL Api
-[] Add get_MAL_data function
-[] Add get_anime_info(anime_dir_name)
-[] Data storage structure
-[] Store anime metadata (Images, description, title, rating, etc)
+## 🐍 Python & Data
 
-## Svelte & Frontend
+- [x] Create function to fetch anime list from API
+- [ ] Integrate MyAnimeList (MAL) API
+  - [ ] Handle authentication
+  - [ ] Fetch user anime list
+  - [ ] Sync progress with local data
+- [ ] Implement `get_MAL_data()` helper
+- [ ] Implement `get_anime_info(anime_dir_name)`
+- [ ] Define JSON data storage structure
+- [x] Store anime metadata locally:
+  - [x] Titles
+  - [x] Descriptions
+  - [x] Ratings
+  - [ ] Images / thumbnails
+  - [x] Genres, year, episode count
 
-[] Add get_anime_info UI
-[] Video player
-[] Watching anime tab
-[] Load .json files instead of api request
-[] Merge all subtabs into one tab component
+---
 
-## Others
+## 🎨 Svelte & Frontend
 
-[] Todo styling update
-[] Test build
+- [ ] Create `get_anime_info` UI component
+- [ ] Implement video player component
+  - [ ] Add resume/playback state saving
+  - [ ] Add basic controls (seek, pause, fullscreen)
+  - [ ] Subtitle support (planned)
+- [ ] Add “Watching” tab for currently watched anime
+- [ ] Load anime library from JSON files instead of live API
+- [ ] Merge all subtabs into a unified tab component
+- [ ] Add MAL sync toggle in UI (optional feature)
+
+---
+
+## ⚙️ Others / General
+
+- [x] Improve Todo.md styling & structure (meta ✔️)
+- [ ] Test Tauri build process
+  - [ ] Debug Python backend calls
+  - [ ] Verify static assets work in packaged build
+- [ ] Add project screenshots / demo GIFs to README
+- [x] Setup `.gitignore` properly (`__pycache__`, build artifacts, etc.)
