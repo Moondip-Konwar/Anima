@@ -2,11 +2,11 @@ import { fetchBasicAnimeData, fetchPaginatedAnimeData } from "../lib/utils/fetch
 import { runPython } from "../lib/utils/python";
 
 export const load = async ({ setHeaders }) => {
-	const data = await fetch_json(setHeaders);
+	const data = await fetchJson(setHeaders);
 	return { ...data };
 };
 
-async function fetch_new(setHeaders) {
+async function fetchNew(setHeaders) {
 	{
 		const popularAnime = await fetchBasicAnimeData("POPULARITY_DESC");
 		const topRatedAnime = await fetchPaginatedAnimeData("SCORE_DESC", 1);
@@ -26,7 +26,7 @@ async function fetch_new(setHeaders) {
 	}
 }
 
-async function fetch_json(setHeaders) {
+async function fetchJson(setHeaders) {
 	const anime_data = await runPython("../backend/read.py", ["../backend/data/library.json"]);
 	setHeaders({
 		"cache-control": "public, max-age=172800, stale-while-revalidate=86400"
