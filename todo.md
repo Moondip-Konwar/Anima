@@ -3,7 +3,6 @@
 ## Data
 
 # Make .json files
-
 [] Load .json files instead of api request
 [] Make get animes from api request function
 [] MAL Api
@@ -12,6 +11,7 @@
 
 ## Python
 
+[] Read/Write .json files
 [] Store anime metadata (Images, description, title, rating, etc)
 
 ## Svelte
