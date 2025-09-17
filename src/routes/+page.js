@@ -1,5 +1,5 @@
-import { fetchBasicAnimeData, fetchPaginatedAnimeData } from "../lib/utils/fetch";
-import { runPython } from "../lib/utils/python";
+import { fetchBasicAnimeData, fetchPaginatedAnimeData, fetchJson } from "../lib/utils/fetch";
+import { runPython } from "../lib/utils/python.js";
 
 export const load = async ({ setHeaders }) => {
 	const data = await fetchJson(setHeaders);
@@ -25,17 +25,6 @@ async function fetchNew(setHeaders) {
 			favouriteAnime
 		};
 	}
-}
-
-async function fetchJson(setHeaders) {
-	const anime_data = await runPython("../backend/read.py", ["../backend/data/library.json"]);
-	setHeaders({
-		"cache-control": "public, max-age=172800, stale-while-revalidate=86400"
-	});
-
-	return {
-		...anime_data
-	};
 }
 
 async function downloadImages(anime_data) {
