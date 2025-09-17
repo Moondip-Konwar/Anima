@@ -10,7 +10,7 @@
   - [ ] Fetch user anime list
   - [ ] Sync progress with local data
 - [ ] Implement `get_MAL_data()` helper
-- [ ] Implement `get_anime_info(anime_dir_name)`
+- [x] Implement `get_anime_info(anime_dir_name)`
 - [ ] Define JSON data storage structure
 - [x] Store anime metadata locally:
   - [x] Titles
@@ -30,7 +30,7 @@
   - [ ] Add basic controls (seek, pause, fullscreen)
   - [ ] Subtitle support (planned)
 - [ ] Add “Watching” tab for currently watched anime
-- [ ] Load anime library from JSON files instead of live API
+- [x] Load anime library from JSON files instead of live API
 - [ ] Merge all subtabs into a unified tab component
 - [ ] Add MAL sync toggle in UI (optional feature)
 
