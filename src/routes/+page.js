@@ -47,8 +47,6 @@ async function downloadImages(anime_data) {
 			if (anime.bannerImage) {
 				const bannerStatus = await runPython("../backend/image_downloader.py", [anime.bannerImage, "../static/images"]);
 
-				console.log(`Downloaded banner for: ${title}`, bannerStatus);
-
 				if (bannerStatus?.status === "ok" && bannerStatus.file) {
 					// Extract just filename from the path
 					const filename = bannerStatus.file.split("/").pop();
@@ -64,8 +62,6 @@ async function downloadImages(anime_data) {
 					anime.coverImage.extraLarge,
 					"../static/images"
 				]);
-
-				console.log(`Downloaded cover for: ${title}`, coverStatus);
 
 				if (coverStatus?.status === "ok" && coverStatus.file) {
 					const filename = coverStatus.file.split("/").pop();

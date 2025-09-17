@@ -1,18 +1,7 @@
 import os
-
-# import sys
-# import json
 import urllib.request
 
 from utils import get_args, send_result
-
-# Downloads an image from a URL and saves it locally
-# Usage:
-# python3 download_image.py [link] [destination] [name (optional)]
-# Example:
-# python3 download_image.py https://example.com/example.png images example_image
-# Output (JSON):
-# {"status": "ok", "file": "images/example_image.png"}
 
 
 def main():
@@ -41,6 +30,11 @@ def main():
                 name += ext
 
         filepath = os.path.join(destination, name)
+
+        # Check if file exists
+        if os.path.exists(filepath):
+            send_result({"status": "exists", "file": filepath})
+            return
 
         # Download the image
         urllib.request.urlretrieve(link, filepath)
