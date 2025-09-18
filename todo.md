@@ -33,6 +33,7 @@
 - [x] Load anime library from JSON files instead of live API
 - [ ] Merge all subtabs into a unified tab component
 - [ ] Add MAL sync toggle in UI (optional feature)
+- [ ] Proper & Better Navigation
 
 ---
 
