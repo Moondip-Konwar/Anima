@@ -1,5 +1,6 @@
 <script>
 	import AnimeSearchDrawer from "./AnimeSearchDrawer.svelte";
+	import LoadAnimeFromLocal from "./LoadAnimeFromLocal.svelte";
 </script>
 
 <header class="header">
@@ -22,8 +23,10 @@
 			Anima
 		</h1>
 	</a>
-
-	<AnimeSearchDrawer />
+	<div class="nav-items">
+		<LoadAnimeFromLocal />
+		<AnimeSearchDrawer />
+	</div>
 </header>
 
 <style>
@@ -47,5 +50,13 @@
 
 	.header-title:hover {
 		color: #e64a19;
+	}
+
+	.nav-items {
+		display: flex;
+		flex-direction: row;
+		gap: 1rem;
+		justify-content: center;
+		align-items: center;
 	}
 </style>

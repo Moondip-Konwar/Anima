@@ -135,6 +135,9 @@
 </div>
 
 <style>
+	.drawer {
+		height: 28px;
+	}
 	.drawer-button {
 		display: flex;
 		align-items: center;
