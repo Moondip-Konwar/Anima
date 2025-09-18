@@ -4,7 +4,7 @@
 	async function handleClick() {
 		const anime_fodlers = await runPython("../backend/read.py", ["../backend/data/anime_folders_container.json"]);
 		const local_anime_data = await runPython("../backend/get_local_animes.py", anime_fodlers);
-		runPython("../backend/write.py", ["local_anime_data.json", local_anime_data]);
+		runPython("../backend/write.py", ["../backend/data/local_anime_data.json", local_anime_data]);
 	}
 </script>
 
