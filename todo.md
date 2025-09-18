@@ -11,7 +11,7 @@
   - [ ] Sync progress with local data
 - [ ] Implement `get_MAL_data()` helper
 - [x] Implement `get_anime_info(anime_dir_name)`
-- [ ] Define JSON data storage structure
+- [x] Define JSON data storage structure
 - [x] Store anime metadata locally:
   - [x] Titles
   - [x] Descriptions
@@ -19,6 +19,7 @@
   - [x] Images / thumbnails
   - [x] Genres, year, episode count
 - [ ] Scan and add local animes to list
+- [ ] Better error handling for python files
 
 ---
 
@@ -32,16 +33,17 @@
 - [ ] Add “Watching” tab for currently watched anime
 - [x] Load anime library from JSON files instead of live API
 - [ ] Merge all subtabs into a unified tab component
-- [ ] Add MAL sync toggle in UI (optional feature)
+- [ ] Add MAL sync toggle in UI
 - [ ] Proper & Better Navigation
 
 ---
 
 ## ⚙️ Others / General
 
-- [x] Improve Todo.md styling & structure (meta ✔️)
+- [x] Improve Todo.md styling & structure
 - [ ] Test Tauri build process
   - [ ] Debug Python backend calls
   - [ ] Verify static assets work in packaged build
 - [ ] Add project screenshots / demo GIFs to README
 - [x] Setup `.gitignore` properly (`__pycache__`, build artifacts, etc.)
+- [ ] Better docs for contributors
