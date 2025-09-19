@@ -8,7 +8,6 @@
 
 	/** @type {Props} */
 	let { children } = $props();
-	
 </script>
 
 <div class="root">
@@ -23,7 +22,7 @@
 		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		gap: 2rem;
 		background-color: #0f0f11;
 	}
 </style>

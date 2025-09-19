@@ -1,5 +1,5 @@
 <footer class="footer">
-	<h6 class="footer-text">Product by Omkar Narayankar</h6>
+	<h6 class="footer-text">Product by Omkar Narayankar & Moondip Konwar</h6>
 </footer>
 
 <style>
@@ -10,6 +10,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		background-color: #0f0f11;
 	}
 
 	.footer-text {
