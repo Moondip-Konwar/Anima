@@ -2,7 +2,11 @@ import { gql, request } from "graphql-request";
 import { runPython } from "$lib/utils/python.js";
 
 export const fetchBasicAnimeData = async (sortType) => {
-	const query = gql`
+  if (!navigator.onLine) {
+    console.error("fetchBasicAnimeData: Offline");
+    return;
+  }
+  const query = gql`
     {
       Page(perPage: 10) {
         media(sort: ${sortType}, type: ANIME, status: FINISHED) {
@@ -19,17 +23,21 @@ export const fetchBasicAnimeData = async (sortType) => {
       }
     }
   `;
-	const fetchedData = await request("https://graphql.anilist.co", query);
+  const fetchedData = await request("https://graphql.anilist.co", query);
 
-	if (fetchedData?.Page?.media) {
-		return fetchedData.Page.media;
-	} else {
-		return null;
-	}
+  if (fetchedData?.Page?.media) {
+    return fetchedData.Page.media;
+  } else {
+    return null;
+  }
 };
 
 export const fetchPaginatedAnimeData = async (sortType, pageNo) => {
-	const query = gql`
+  if (!navigator.onLine) {
+    console.error("fetchPaginatedAnimeData: Offline");
+    return;
+  }
+  const query = gql`
     {
       Page(perPage: 10, page: ${pageNo}) {
           media(sort: ${sortType}, type: ANIME, status: FINISHED) {
@@ -48,17 +56,21 @@ export const fetchPaginatedAnimeData = async (sortType, pageNo) => {
       }
     }
   `;
-	const fetchedData = await request("https://graphql.anilist.co", query);
+  const fetchedData = await request("https://graphql.anilist.co", query);
 
-	if (fetchedData?.Page?.media) {
-		return fetchedData.Page.media;
-	} else {
-		return null;
-	}
+  if (fetchedData?.Page?.media) {
+    return fetchedData.Page.media;
+  } else {
+    return null;
+  }
 };
 
 export const fetchAdvAnimeData = async (id) => {
-	const query = gql`
+  if (!navigator.onLine) {
+    console.error("fetchAdvAnimeData: Offline");
+    return;
+  }
+  const query = gql`
     {
       info: Media(id: ${id}) {
         id
@@ -79,17 +91,21 @@ export const fetchAdvAnimeData = async (id) => {
       }
     }
   `;
-	const fetchedData = await request("https://graphql.anilist.co", query);
+  const fetchedData = await request("https://graphql.anilist.co", query);
 
-	if (fetchedData?.info) {
-		return fetchedData.info;
-	} else {
-		return null;
-	}
+  if (fetchedData?.info) {
+    return fetchedData.info;
+  } else {
+    return null;
+  }
 };
 
 export const fetchAnimeRecommendations = async (id) => {
-	const query = gql`
+  if (!navigator.onLine) {
+    console.error("fetchAnimeRecommendations: Offline");
+    return;
+  }
+  const query = gql`
     {
       Page(perPage: 5, page: 1) {
         recommendations(mediaRecommendationId: ${id} sort: RATING_DESC) {
@@ -108,26 +124,18 @@ export const fetchAnimeRecommendations = async (id) => {
       }
     }
   `;
-	const fetchedData = await request("https://graphql.anilist.co", query);
+  const fetchedData = await request("https://graphql.anilist.co", query);
 
-	if (fetchedData?.Page?.recommendations) {
-		return fetchedData.Page.recommendations;
-	} else {
-		return null;
-	}
+  if (fetchedData?.Page?.recommendations) {
+    return fetchedData.Page.recommendations;
+  } else {
+    return null;
+  }
 };
-export async function fetchJson(setHeaders, filepath) {
-	const anime_data = await runPython("../backend/read.py", [filepath]);
-	setHeaders({
-		"cache-control": "public, max-age=172800, stale-while-revalidate=86400"
-	});
 
-	return {
-		...anime_data
-	};
-}
+// The below functions (fetchSearchResults) should work offline
 export const fetchSearchResults = async (searchTerm) => {
-	const query = gql`
+  const query = gql`
   {
     search: Page(perPage: 5, page: 1) {
       media(search: "${searchTerm}", sort: SEARCH_MATCH, type:ANIME) {
@@ -147,11 +155,11 @@ export const fetchSearchResults = async (searchTerm) => {
     }
   }
   `;
-	const fetchedData = await request("https://graphql.anilist.co", query);
+  const fetchedData = await request("https://graphql.anilist.co", query);
 
-	if (fetchedData?.search?.media) {
-		return fetchedData.search.media;
-	} else {
-		return null;
-	}
+  if (fetchedData?.search?.media) {
+    return fetchedData.search.media;
+  } else {
+    return null;
+  }
 };

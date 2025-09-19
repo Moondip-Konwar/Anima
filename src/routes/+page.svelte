@@ -4,7 +4,7 @@
 
 	export let data;
 	const { popularAnime, trendingAnime, topRatedAnime, favouriteAnime } = data;
-	console.log(data);
+	console.log("src/routes/+page.svelte: Received: ", { data });
 </script>
 
 <div class="home-page">

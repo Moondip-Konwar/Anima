@@ -52,17 +52,19 @@ function safeParse(value) {
  *   console.log(result); // -> ["arg1", { apple: "banana", aa: 12312 }]
  * }
  */
-export async function runPython(script, args = []) {
+export async function runPython(script, args = [], logging = true) {
 	try {
 		const safeArgs = args.map((arg) => (typeof arg === "object" ? JSON.stringify(arg) : arg));
 
 		const rawResult = await invoke("run_python", { script, args: safeArgs });
 		const parsedResult = safeParse(rawResult);
 
-		console.log(`[Python] ${script} returned:`, parsedResult);
+		if (logging) {
+			console.log(`${script}:`, parsedResult);
+		}
 		return parsedResult;
 	} catch (error) {
-		console.error(`[Python] Error running ${script}:`, error);
+		console.error(`${script}:`, error);
 		throw error;
 	}
 }
