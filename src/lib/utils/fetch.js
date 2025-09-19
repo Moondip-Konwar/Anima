@@ -1,5 +1,4 @@
 import { gql, request } from "graphql-request";
-import { runPython } from "$lib/utils/python.js";
 
 export const fetchBasicAnimeData = async (sortType) => {
   if (!navigator.onLine) {
