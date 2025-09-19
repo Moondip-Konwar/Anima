@@ -3,14 +3,14 @@
 	import PopularAnimeCarousel from "../lib/components/PopularAnimeCarousel.svelte";
 
 	export let data;
-	const { popularAnime, trendingAnime, topRatedAnime, favouriteAnime } = data;
+	const { popularAnime, trendingAnime, topRatedAnime, favouriteAnime, watchingAnime } = data;
 	console.log("src/routes/+page.svelte: Received: ", { data });
 </script>
 
 <div class="home-page">
 	<PopularAnimeCarousel {popularAnime} />
 
-	<Tabs {trendingAnime} {topRatedAnime} {favouriteAnime} />
+	<Tabs {trendingAnime} {topRatedAnime} {favouriteAnime} {watchingAnime} />
 </div>
 
 <style>

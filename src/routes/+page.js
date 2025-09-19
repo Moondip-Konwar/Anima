@@ -21,8 +21,10 @@ async function fetchNewUpdate() {
 		const topRatedAnime = await fetchPaginatedAnimeData("SCORE_DESC", 1);
 		const trendingAnime = await fetchPaginatedAnimeData("TRENDING_DESC", 1);
 		const favouriteAnime = await fetchPaginatedAnimeData("FAVOURITES_DESC", 1);
+		// const watchingAnime = await fetchPaginatedAnimeData("WATCHING_DESC")
 
 		await runPython(
+			// watchingAnime
 			"../backend/write.py",
 			["../backend/data/library.json", { popularAnime, topRatedAnime, trendingAnime, favouriteAnime }],
 			false
@@ -33,6 +35,7 @@ async function fetchNewUpdate() {
 			trendingAnime,
 			topRatedAnime,
 			favouriteAnime
+			// watchingAnime
 		};
 	}
 }
