@@ -24,6 +24,7 @@ fn run_python(script: String, args: Vec<String>) -> Result<String, String> {
 
 fn main() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_fs::init())
         .invoke_handler(tauri::generate_handler![run_python])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
