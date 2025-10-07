@@ -1,11 +1,12 @@
 # Anima
 
-#### An offline anime library & player built with Tauri + SvelteKit + Python.
+#### An offline anime library & player built with Tauri + SvelteKit + Python.  
+The full version is still in early development and incomplete, but for a lightweight, mostly complete Python-native alternative, check out [Anima Lite](https://github.com/Moondip-Konwar/anima-lite).
 
-If you find this project useful, a star would be appreciated ⭐
+If you find this project useful, a star would be greatly appreciated ⭐
 
 ## Features
-
+*Not all of the mentioned features are implemented yet*
 * Organize and browse your **local anime collection** with a clean Netflix-style UI.
 * **MAL sync support** (optional): update your watch progress and metadata.
 * **Video playback with resume**: remembers your last watched position per episode.
